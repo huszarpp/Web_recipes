@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>{{ name }} food has already a recipe!</h1>
+    <form action="/recipes/name">
+        <input type="submit" value="Try again">
+    </form>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Add ingredients</h1>
+    <p>{{ food_name }}</p>
+    <p>{{ food_category }}</p>
+    <img src="{{ food_img }}" alt="{{ food_img }}" width="100">
+    <p>{{ food_prep }}</p>
+    <h2>Ingredients</h2>
+    <ul>
+        {% for ingredient in ingredients_exist %}
+            <li>{{ ingredient.quantity }} {{ ingredient.unit }} {{ ingredient.ingredient }}</li><br>
+        {% endfor %}
+    </ul>
+    <form method="post" action="{{ '/recipes/name/%s/ingredient'%food_id }}">
+        <input type="text" name="ing_quant" placeholder="Quantity">
+        {% for ingredient in ingredients_all %}
+            <input type="radio" name="ing_unit" value="{{ ingredient.unit }}"> {{ ingredient.unit }}
+        {% endfor %}
+        <br><br>
+        <input type="text" name="ing_name" placeholder="Ingredient name"><br><br>
+        <input type="submit" value="Add one more ingredient">
+        <input type="submit" value="Finish and show recipe of {{ food_name }}" formaction="{{ '/recipes/name/%s/ingredient?redirectToFood=True'%food_id }}">
+    </form>
+{% endblock %}

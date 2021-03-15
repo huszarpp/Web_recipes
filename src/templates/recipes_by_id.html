@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>{{ food.name }}</h1>
+    <img src="{{ food.img }}" alt="{{ food.name }}">
+    <br>
+    <h2>Ingredients:</h2>
+    <ul>
+        {% for ing in ingredients %}
+        <li>
+            {{ ing.quantity }}
+            {{ ing.unit }}
+            {{ ing.ingredient }}
+        </li>
+        {% endfor %}
+    </ul>
+    <p>{{ food.preparation }}</p>
+    <form method="delete" action="{{ '/recipes/name/%s'%recipe_id }}">
+        <input type="submit" value="Delete recipe of {{ food.name }}">
+    </form>
+{% endblock %}

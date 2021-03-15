@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>List of {{ category.type }} cat</h1>
+    <p>Choose one to show the details</p>
+    <ol>
+        {% for food in foods %}
+        <li>
+            <a href="{{ '/recipes/name/%s'%food.get_id() }}">{{ food.name }}</a>
+        </li>
+        {% endfor %}
+    </ol>
+{% endblock %}

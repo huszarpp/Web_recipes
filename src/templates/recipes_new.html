@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>New recipe</h1>
+    <p>Please fill in the form</p>
+    <form method="post" action="/recipes/name/save">
+        <input type="text" name="food_name" placeholder="food name"><br><br>
+        <input list="food_category" name="category" placeholder="category">
+        <datalist id="food_category">
+            {% for cat in categories %}
+            <option value="{{ cat.type }}">
+            {% endfor %}
+        </datalist><br><br>
+        <input type="url" name="food_img" placeholder="picture url"><br><br>
+        <input type="text" name="food_prep" placeholder="description of preparation"><br><br>
+        <input type="submit" value="Save and add ingredients">
+    </form>
+{% endblock %}
